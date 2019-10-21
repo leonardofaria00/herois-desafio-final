@@ -51,9 +51,14 @@ public class JogadorService {
 	}
 
 	public void cadastrar(Jogador jogador) throws NegocioException {
+		
 		boolean contains = dao.getJogadores().contains(jogador);// Ajustar verificação
 		if (contains) {
 			throw new NegocioException("Nickname ja cadastrado, informe outro!");
+		}
+		
+		if (jogador.getSenha().length() < 6 || jogador.getSenha().length() > 8) {
+			throw new NegocioException("Informe uma senha entre 6 a 8 caracteres.");
 		}
 		dao.cadastrar(jogador);
 	}

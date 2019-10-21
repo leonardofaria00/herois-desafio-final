@@ -72,7 +72,7 @@ public class BatalhaService {
 
 			for (int i = 1; i <= 10; i++) {
 				System.out.println();
-				System.out.println(i + "ª batalha!!!");
+				System.out.println(i + "ª turno!!!");
 				System.out.println();
 
 				System.out.println("Ataque do " + jogadorNome);
