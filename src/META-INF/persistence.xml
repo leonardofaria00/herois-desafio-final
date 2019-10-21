@@ -5,7 +5,8 @@
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <jta-data-source>java:openejb/Resource/heroiJtaDatabase</jta-data-source>
         <properties>
-            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect" />
+<!--        <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" /> -->
             
             <!-- As many hibernate properties as you need, some examples: -->
             <property name="hibernate.show_sql" value="true" />
