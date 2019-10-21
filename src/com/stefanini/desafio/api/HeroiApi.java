@@ -13,13 +13,13 @@ import com.stefanini.desafio.service.HeroiService;
 @Path("/heroi")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-public class HeroiApi {
+public class HeroiApi extends BaseAPI {
 
 	@Inject
-	private HeroiService heroiService;
+	private HeroiService hService;
 
 	@GET
 	public Response listar() {
-		return Response.ok(heroiService.listar()).build();
+		return Response.ok(hService.listar()).build();
 	}
 }

@@ -10,6 +10,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 @NamedQueries(value = {
 		@NamedQuery(name = "Jogador.findAll", query = "SELECT j FROM Jogador j ORDER BY j.id"),
@@ -26,7 +27,9 @@ public class Jogador implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	@NotNull
 	private String nickname;
+	@NotNull
 	private String senha;
 
 	@ManyToOne

@@ -11,11 +11,10 @@ public class JogadorParser extends AbstractParser<JogadorDTO, Jogador> {
 		JogadorDTO dto = new JogadorDTO();
 		dto.setId(jogador.getId());
 		dto.setNome(jogador.getNickname());
-		
-		
-		if (jogador.getHeroi() != null) {
+
+		if (jogador.getHeroi() != null)
 			dto.setHeroi(jogador.getHeroi());
-		}
+
 		return dto;
 	}
 

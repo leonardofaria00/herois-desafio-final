@@ -15,13 +15,13 @@ import com.stefanini.desafio.service.JogadorService;
 @Path("/autenticar")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-public class LoginAPI {
+public class LoginAPI extends BaseAPI {
 
 	@Inject
 	JogadorService service;
 
 	@POST
-	public Response login(Jogador jogador) throws NegocioException {
+	public Response login(Jogador jogador) throws NegocioException {// Inspecionado
 		return Response.ok(service.getJogadorByID(jogador)).build();
 
 	}
