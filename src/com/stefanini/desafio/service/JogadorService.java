@@ -50,13 +50,15 @@ public class JogadorService {
 		return dto.toDTO(dao.getJogadores());
 	}
 
+	@SuppressWarnings("unlikely-arg-type")
 	public void cadastrar(Jogador jogador) throws NegocioException {
+
+		List<Jogador> list = dao.getJogadores();
 		
-		boolean contains = dao.getJogadores().contains(jogador);// Ajustar verificação
-		if (contains) {
+		if (list.contains(jogador.getNickname())) {
 			throw new NegocioException("Nickname ja cadastrado, informe outro!");
 		}
-		
+
 		if (jogador.getSenha().length() < 6 || jogador.getSenha().length() > 8) {
 			throw new NegocioException("Informe uma senha entre 6 a 8 caracteres.");
 		}

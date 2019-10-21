@@ -31,20 +31,20 @@ public class BatalhaService {
 			List<Heroi> herois = hdao.getHerois();
 			Random gerador = new Random();
 			int inimigo = gerador.nextInt(herois.size());
+			Heroi oponente = hdao.getHeroiByID(inimigo);
 
 			Jogador jogador = dao.getJogadorByID(id);
-			Heroi oponente = hdao.getHeroiByID(inimigo);
 
 			String vencedor = null;
 
 			// Dados do jogador
 			String jogadorNome = jogador.getHeroi().getNome();
 			System.out.println("Nome do Jogador: " + jogadorNome);
-			
+
 			Integer jogadorAtaque = jogador.getHeroi().getAtaque();
 			System.out.println("Ataque do Jogador: " + jogadorAtaque);
 
-			Integer jogadorPoder = jogador.getHeroi().getPoder() * jogadorAtaque;
+			Integer jogadorPoder = jogador.getHeroi().getPoder() + new Random().nextInt(100);
 			System.out.println("Poder do Jogador: " + jogadorPoder);
 
 			Integer jogadorDefesa = jogador.getHeroi().getDefesa();
@@ -60,9 +60,9 @@ public class BatalhaService {
 			Integer oponenteAtaque = oponente.getAtaque();
 			System.out.println("Ataque do Oponente: " + oponenteAtaque);
 
-			Integer oponentePoder = oponente.getPoder() * oponenteAtaque;
+			Integer oponentePoder = oponente.getPoder() + new Random().nextInt(100);
 			System.out.println("Poder do Oponente: " + oponentePoder);
-			
+
 			Integer oponenteDefesa = oponente.getDefesa();
 			System.out.println("Defesa do Oponente: " + oponenteDefesa);
 
@@ -72,18 +72,18 @@ public class BatalhaService {
 
 			for (int i = 1; i <= 10; i++) {
 				System.out.println();
-				System.out.println(i + "ª turno!!!");
+				System.out.println(i + "ª Turno!!!");
 				System.out.println();
 
 				System.out.println("Ataque do " + jogadorNome);
-				Integer jogadorDano = jogadorAtaque - oponenteDefesa;
+				Integer jogadorDano = (jogadorAtaque + jogadorPoder) - oponenteDefesa;
 				oponenteVida -= jogadorDano;
 				System.out.println("Dano de ataque: " + jogadorDano);
 				System.out.println("Vida do oponente: " + oponenteVida);
 				System.out.println();
 
 				System.out.println("Ataque do " + oponenteNome);
-				Integer oponenteDano = oponenteAtaque - jogadorDefesa;
+				Integer oponenteDano = (oponenteAtaque + oponentePoder) - jogadorDefesa;
 				jogadorVida -= oponenteDano;
 				System.out.println("Dano de ataque: " + oponenteDano);
 				System.out.println("Sobrou de vida: " + jogadorVida);
@@ -109,8 +109,14 @@ public class BatalhaService {
 		}
 	}
 
-	public Jogador batalhar(Integer id_jogador, Integer id_inimigo) {
-		//GOTO
+	public String batalhar(Integer id_jogador, Integer id_inimigo) throws NegocioException {
+
+		return duelar(id_jogador, id_inimigo);
+	}
+
+	public String duelar(Integer id_jogador, Integer id_oponente) throws NegocioException {
+		// GOTO
 		return null;
+
 	}
 }

@@ -28,7 +28,7 @@ public class BatalhaAPI extends BaseAPI{
 
 	@GET
 	@Path("/{id_jogador}/{id_inimigo}") // Inspecionado
-	public Response batalhar(@PathParam("id_jogador") Integer id_jogador, @PathParam("id_heroi") Integer id_inimigo) {
+	public Response batalhar(@PathParam("id_jogador") Integer id_jogador, @PathParam("id_inimigo") Integer id_inimigo) throws NegocioException {
 		return Response.ok(service.batalhar(id_jogador, id_inimigo)).build();
 	}
 }
